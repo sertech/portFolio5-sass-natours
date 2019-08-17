@@ -1,0 +1,40 @@
+// the header is part of the layout so goes here, all this is subjective it can also go
+// to the components folder it's all perspective
+
+.header {
+    height: 95vh;
+    background-image: linear-gradient(to right bottom,
+            rgba($color-primary-light, 0.8),
+            rgba($color-primary-dark, 0.80)),
+        url(../img/hero.jpg);
+
+    background-size: cover;
+    background-position: top;
+    /*background-position: top; ensures that the top of the image stays at the top of the container*/
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    /** polygon(x y, x y, x y) */
+    position: relative;
+
+    &__logo-box {
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+
+    }
+
+    &__logo {
+        height: 3.5rem;
+    }
+
+    &__text-box {
+        position: absolute;
+        top: 40%;
+        /* this ones position the box element top0 left0*/
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /*this is in relation to the element itself*/
+        /* -50% of the element's height to the top*/
+        text-align: center;
+    }
+}
+
