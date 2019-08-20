@@ -1,0 +1,10 @@
+//row has collapsed because its elements are floated
+//so we use the standart clear
+
+@mixin clearfix {
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}

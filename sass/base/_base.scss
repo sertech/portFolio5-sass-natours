@@ -11,9 +11,9 @@
 /* set the root font size never user px here is bad practice*/
 html {
     /* font-size: 100%; */
-    /*todo>> this percentage translates a font size given by the browser*/
+    /* this percentage translates a font size given by the browser*/
     /* 100% means if the user doesn't change anything this means the font-size will be 16px the absolute default*/
-    /* so we want 10px this 10/16=0.625 or 62.5% */
+    /* so we want 1rem = 10px this 10/16=0.625 or 62.5% */
     font-size: 62.5%;
     // this defines what 1rem is
     // this font-size defines how we size the entire site that's why it doesn't go in typography

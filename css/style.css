@@ -40,9 +40,9 @@
 /* set the root font size never user px here is bad practice*/
 html {
   /* font-size: 100%; */
-  /*todo>> this percentage translates a font size given by the browser*/
+  /* this percentage translates a font size given by the browser*/
   /* 100% means if the user doesn't change anything this means the font-size will be 16px the absolute default*/
-  /* so we want 10px this 10/16=0.625 or 62.5% */
+  /* so we want 1rem = 10px this 10/16=0.625 or 62.5% */
   font-size: 62.5%; }
 
 body {
@@ -153,3 +153,33 @@ body {
     /*this is in relation to the element itself*/
     /* -50% of the element's height to the top*/
     text-align: center; }
+
+.row {
+  max-width: 114rem;
+  background-color: #eee;
+  margin: 0 auto;
+  font-size: 2rem;
+  color: #eee; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: '';
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    background-color: orangered;
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
