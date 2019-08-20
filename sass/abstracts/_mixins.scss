@@ -1,8 +1,8 @@
 //row has collapsed because its elements are floated
-//so we use the standart clear
+//so we use the standard clear
 
 @mixin clearfix {
-    &::after {
+    &::after { //.row::after {}
         content: '';
         display: table;
         clear: both;
