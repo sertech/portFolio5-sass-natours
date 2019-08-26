@@ -5,13 +5,13 @@
     // max-width means if we have enough available space then it will have the width that we specified
     // but if there is not enough width, so basically if the viewport is smaller than the width we specified here
     // if the viewport is smaller than 114rem, then it will fill 100% of the available space that is has
-    background-color: #eee;
+    //background-color: #eee;
 
     // now to center one block element inside another block element
     //center this row in the viewport
     margin: 0 auto;
-    font-size: 2rem;
-    color: #eee;
+    //font-size: 2rem;
+    //color: #eee;
     //background: greenyellow;
 
     &:not(:last-child) {
@@ -29,7 +29,7 @@
     // [class*="col-"] has "col-" in anyplace inside the class name
     // [class$="col-"] select any class that ends with "col-"  
     [class^="col-"] {
-        background-color: orangered;
+        //background-color: orangered;
         float: left;
 
         &:not(:last-child) {
@@ -39,7 +39,7 @@
 
     .col-1-of-2 {
         //The 100% is the whole width of the element that we want to split into two columns. 
-        // (from 100% element - accumulated_leftmargin) / 2 
+        // (from 100% element - accumulated_left-margin) / 2 
         width: calc((100% - #{$gutter-horizontal}) / 2);
     }
 
