@@ -5,6 +5,7 @@
     /*  The :link selector is used to select unvisited links.
     Note: The :link selector does not style links you have already visited.  */
     /*! this is like .btn {}*/
+    &,
     &:link,
     &:visited {
         text-transform: uppercase;
@@ -15,6 +16,10 @@
         transition: all .2s;
         position: relative;
         font-size: $default-font-size;
+
+        //change for the <button> element
+        border: none;
+        cursor: pointer;
     }
 
     &--white {
@@ -35,7 +40,9 @@
         }
     }
 
+    &:active,
     &:hover {
+        outline: none;
         transform: translateY(-3px);
         box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
         /*! box-shadow: X Y Blur */
