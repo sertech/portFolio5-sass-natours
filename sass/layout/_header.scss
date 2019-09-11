@@ -1,20 +1,51 @@
-// the header is part of the layout so goes here, all this is subjective it can also go
-// to the components folder it's all perspective
+// the header is part of the layout so goes here, all this is subjective it can also go to the components folder it's all perspective
 
 .header {
-    height: 95vh;
+    height: 85vh;
     background-image: linear-gradient(to right bottom,
             rgba($color-primary-light, 0.8),
             rgba($color-primary-dark, 0.80)),
-        url(../img/hero.jpg);
+        url(../img/hero-small.jpg);
 
     background-size: cover;
     background-position: top;
     /*background-position: top; ensures that the top of the image stays at the top of the container*/
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    // -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    // clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     /** polygon(x y, x y, x y) */
     position: relative;
+
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        height: 95vh;
+    }
+
+    // responsive images with css the coma means or.
+    // also media queries use ems 
+    // 600px*(1em/16px) = 37.5em
+    // 2000px*(1em/16px) = 125em
+    @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em),
+    only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
+    only screen and (min-width:125em) {
+        //when the resolution is larger than 192dpi (2x screen) and the same time the width is larger than 600px 
+        background-image: linear-gradient(to right bottom,
+                rgba($color-primary-light, 0.8),
+                rgba($color-primary-dark, 0.80)),
+            url(../img/hero.jpg);
+    }
+
+    // @media (min-width:2000px) {
+    //     background-image: linear-gradient(to right bottom,
+    //         rgba($color-primary-light, 0.8),
+    //         rgba($color-primary-dark, 0.80)),
+    //     url(../img/hero.jpg)
+    // }
+
+    @include respond(phone) {
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    }
 
     &__logo-box {
         position: absolute;
@@ -38,4 +69,3 @@
         text-align: center;
     }
 }
-

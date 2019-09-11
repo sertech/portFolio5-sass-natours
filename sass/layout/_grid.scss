@@ -18,9 +18,19 @@
         //.row:not(:last-child())
         margin-bottom: $gutter-vertical;
 
+        @include respond(tab-port) {
+            margin-bottom: $gutter-vertical-small;
+        }
+
         // in here we are applying margin-bottom to all rows 
         // except the last child
     }
+
+    @include respond(tab-port) {
+        max-width: 50rem;
+        padding: 0 3rem;
+    }
+    
 
     @include clearfix;
 
@@ -34,6 +44,15 @@
 
         &:not(:last-child) {
             margin-right: $gutter-horizontal;
+
+            @include respond(tab-port) {
+                margin-right: 0;
+                margin-bottom: $gutter-vertical-small;
+            }
+        }
+
+        @include respond(tab-port) {
+            width: 100% !important;
         }
     }
 
@@ -48,11 +67,13 @@
         width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
     }
 
-    .col-2-of-3 { // 2(1-of3)+1left-margin
+    .col-2-of-3 {
+        // 2(1-of3)+1left-margin
         width: calc(2 * ((100% - 2 * #{$gutter-horizontal}) / 3) + #{$gutter-horizontal});
     }
 
-    .col-1-of-4 { // 4 block have 3 spaces
+    .col-1-of-4 {
+        // 4 block have 3 spaces
         width: calc((100% - 3 * #{$gutter-horizontal}) / 4);
     }
 
@@ -60,7 +81,8 @@
         width: calc(2 * ((100% - 3 * #{$gutter-horizontal}) / 4) + #{$gutter-horizontal});
     }
 
-    .col-3-of-4 { // 3(1-of-4) + 2 left-margins
+    .col-3-of-4 {
+        // 3(1-of-4) + 2 left-margins
         width: calc(3 * ((100% - 3 * #{$gutter-horizontal}) / 4) + 2 * #{$gutter-horizontal});
     }
 }

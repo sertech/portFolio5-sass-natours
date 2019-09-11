@@ -21,6 +21,35 @@
 -->
 
 <body>
+    <!-- the menu button must be at the top of the body -->
+    <div class="navigation">
+        <!-- first ingredient for the checkbox hack id connects input an label -->
+        <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+
+        <!-- here later will have the icon -->
+        <label for="navi-toggle" class="navigation__button">
+            <span class="navigation__icon">&nbsp;</span>
+        </label>
+
+
+        <!-- &nbsp; stands for white space this div is empty because on top of this we'll put the
+        navigation itself -->
+        <div class="navigation__background">&nbsp;</div>
+
+        <!-- this will be the huge container spamming the entire page, in here we can vertically and horizontally 
+        center the unordered list-->
+        <nav class="navigation__nav">
+            <ul class="navigation__list">
+                <li class="navigation__item"><a href="#" class="navigation__link"><span>01</span>About Natours</a></li>
+                <li class="navigation__item"><a href="#" class="navigation__link"><span>02</span>Your benefits</a></li>
+                <li class="navigation__item"><a href="#" class="navigation__link"><span>03</span>Popular tours</a></li>
+                <li class="navigation__item"><a href="#" class="navigation__link"><span>04</span>Stories</a></li>
+                <li class="navigation__item"><a href="#" class="navigation__link"><span>05</span>Book now</a></li>
+            </ul>
+        </nav>
+    </div>
+
+
     <!-- the header is a block in BEM because its a standalone  component that is meaningful on its own -->
     <header class="header">
         <div class="header__logo-box">
@@ -63,9 +92,49 @@
                         <!--block -->
                         <!-- class="composition__photo  block__element-->
                         <!-- composition__photo--p1     block__element--modifier-->
+                        <!-- 
                         <img src="img/nat-1-large.jpg" alt="Photo 1" class="composition__photo composition__photo--p1">
                         <img src="img/nat-2-large.jpg" alt="Photo 2" class="composition__photo composition__photo--p2">
-                        <img src="img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3">
+                        <img src="img/nat-3-large.jpg" alt="Photo 3" class="composition__photo composition__photo--p3"> 
+                        -->
+                        <!-- resolution switching and density switching -->
+                        <!-- 
+                        1) in the srcset we specify the width descriptor in px 300w and 1000w nat-1 has 300px with nat-1-large has 1000px width
+                        2) we use the size attribute to specify the approximate width in vw units for different break points the last one is the default if the break points don't apply     
+                        -->
+                        <img src="img/nat-1-large.jpg"
+                            srcset="img/nat-1.jpg 300w, img/nat-1-large 1000w"
+                            sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px" alt="Photo 1"
+                            class="composition__photo composition__photo--p1" >
+
+                        <img src="img/nat-2-large.jpg"
+                            srcset="img/nat-2.jpg 300w, img/nat-2-large 1000w"
+                            sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px" alt="Photo 2"
+                            class="composition__photo composition__photo--p2" >
+
+                        <img src="img/nat-3-large.jpg"
+                            srcset="img/nat-3.jpg 300w, img/nat-3-large 1000w"
+                            sizes="(max-width: 900px) 20vw, (max-width: 600px) 30vw, 300px" alt="Photo 3"
+                            class="composition__photo composition__photo--p3" >
+
+                        <!-- 
+                        in the sizes attribute, we specify two things - the media condition, and the width the image should be
+                        <img src="one.png"
+                            srcset="two.png 100w, three.png 500w, four.png 1000w"
+                            sizes="<media condition> <width>,
+                                    <media condition> <width>,
+                                    <optional default image width>">
+
+                        <img src="one.png"
+                            srcset="two.png 100w, three.png 500w, four.png 1000w"
+
+                            sizes="(min-width: 900px) 1000px,
+                                (max-width: 900px) and (min-width: 400px) 50em,
+                                ( not (orientation: portrait) ) 300px,
+                                ( (orientation: landscape) or (min-width: 1000px) ) 50vw, 
+                        100vw">
+                        -->
+
                     </div>
                 </div>
             </div>
@@ -146,7 +215,7 @@
                                     <p class="card__price-only">Only</p>
                                     <p class="card__price-value">$297</p>
                                 </div>
-                                <a href="#" class="btn btn--white">Book now!</a>
+                                <a href="#popup" class="btn btn--white">Book now!</a>
                             </div>
                         </div>
                     </div>
@@ -178,7 +247,7 @@
                                     <p class="card__price-only">Only</p>
                                     <p class="card__price-value">$497</p>
                                 </div>
-                                <a href="#" class="btn btn--white">Book now!</a>
+                                <a href="#popup" class="btn btn--white">Book now!</a>
                             </div>
                         </div>
                     </div>
@@ -210,7 +279,7 @@
                                     <p class="card__price-only">Only</p>
                                     <p class="card__price-value">$897</p>
                                 </div>
-                                <a href="#" class="btn btn--white">Book now!</a>
+                                <a href="#popup" class="btn btn--white">Book now!</a>
                             </div>
                         </div>
                     </div>
@@ -332,7 +401,29 @@
 
     <footer class="footer">
         <div class="footer__logo-box">
-            <img src="img/logo-green-2x.png" alt="full logo" class="footer__logo">
+            <!-- 
+            https://www.w3schools.com/tags/att_source_srcset.asp 
+            https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images
+            -->
+            <!-- art direction img depend on screen width 
+            we need to specify a source and a image-->
+            <picture class="footer_logo">
+                <!-- specify multiple sources for one image-->
+                <source media="(max-width: 37.5em)"
+                    srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x">
+                <!-- source attribute srcset with images and also 1x, 2x as density descriptors this is density switching -->
+                <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="full logo"
+                    src="img/logo-green-2x.png">
+                <!--  we force the browser to use the first source set in case maxwisth is less than 600px-->
+            </picture>
+
+            <picture>
+                <source media="(max-width: 37.5em)" srcset="img/logo-green-small-1x.png 1x">
+                <source media="(max-width: 37.5em)" srcset="img/logo-green-small-2x.png 2x">
+                <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="full logo">
+            </picture>
+
+
         </div>
         <div class="row">
             <div class="col-1-of-2">
@@ -348,11 +439,39 @@
             </div>
             <div class="col-1-of-2">
                 <p class="footer__copyright">
-                    Built my <a href="#" class="footer__link">Sergio Alvarez</a> for this online course <a href="#" class="footer__link">Advance CSS and SASS</a>. Copyright &copy; by Sergio Alvarez. You are 100% allowed to use this webpage for both personal and commercial use, but not to claim it as your own design. A credit to the original author, Jonas Schmedtmann, is of course highly apprecieated!
+                    Built my <a href="#" class="footer__link">Sergio Alvarez</a> for this online course <a href="#"
+                        class="footer__link">Advance CSS and SASS</a>. Copyright &copy; by Sergio Alvarez. You are 100%
+                    allowed to use this webpage for both personal and commercial use, but not to claim it as your own
+                    design. A credit to the original author, Jonas Schmedtmann, is of course highly apprecieated!
                 </p>
             </div>
         </div>
     </footer>
+
+    <div class="popup" id="popup">
+        <div class="popup__content">
+            <div class="popup__left">
+                <img src="img/nat-8.jpg" alt="Tour photo" class="popup__img">
+                <img src="img/nat-9.jpg" alt="Tour photo" class="popup__img">
+            </div>
+            <div class="popup__right">
+                <a href="#someid" class="popup__close">&times;</a>
+                <h2 class="heading-secondary u-margin-bottom-small">Start booking now</h2>
+                <h3 class="heading-tertiary u-margin-bottom-small">Important &ndash; Please read these terms before
+                    booking</h3>
+                <p class="popup__text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga odit sapiente
+                    facere, numquam quas dolores tempore nesciunt non officiis inventore modi aspernatur nisi nostrum?
+                    Maiores quam suscipit consequatur illum, modi nobis? Quidem in totam exercitationem blanditiis,
+                    dolore minima dolorum quis quo id illum, voluptatibus voluptatum sunt tempore quibusdam. Aut
+                    exercitationem ipsum illum praesentium consequuntur eos doloremque fugiat voluptatem soluta,
+                    reiciendis dolorum provident eius tempora necessitatibus ab, dolor sed, excepturi quibusdam
+                    accusamus quia natus ad eaque fuga. Eos, ad perferendis enim eligendi molestias sint architecto
+                    minus! Voluptatem, soluta! Maxime enim officia accusamus cupiditate at quaerat assumenda.
+                    Dignissimos excepturi aliquid tempore beatae!</p>
+                <a href="#" class="btn btn--green">Book now</a>
+            </div>
+        </div>
+    </div>
 
     <!-- GRID SAMPLE
     <section class="grid-test">
